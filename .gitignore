@@ -1,0 +1,62 @@
+# General
+temp
+build.config
+__readme.txt
+__old
+
+# files for the dex VM
+*.dex
+
+# Java
+*.class
+*.jar
+
+# Eclipse
+.settings
+.project
+
+# Android
+android/bin
+android/gen
+android/res
+android/lint.xml
+android/proguard.cfg
+.classpath
+proguard-project.txt
+project.properties
+*.apk
+*.ap_
+
+# OS X
+Icon
+Thumbs.db
+.DS_Store
+xcuserdata
+
+# FlashDevelop project files
+*.bat
+*.as3proj
+AIR_Android_readme.txt
+AIR_iOS_readme.txt
+icons
+bat
+lib
+obj
+cert
+sample/dist
+actionscript/mobile/ane
+.actionScriptProperties.actionScriptProperties
+sample/ane
+
+# Flash Builder
+.actionScriptProperties
+.flexProperties
+.flexLibProperties
+bin-debug
+bin-release/
+bin-release-temp/
+libs
+
+# Flash file
+*.swc
+*.swf

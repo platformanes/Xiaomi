@@ -1,0 +1,16 @@
+<extension xmlns="http://ns.adobe.com/air/extension/3.2">
+  <id>us.sanguo.ane.xiaomi</id>
+  <versionNumber>0.0.1</versionNumber>
+  <platforms>
+	<platform name="Android-ARM">
+      <applicationDeployment>
+        <nativeLibrary>xiaomi.jar</nativeLibrary>
+        <initializer>us.sanguo.ane.xiaomi.Xiaomi</initializer>
+        <finalizer>us.sanguo.ane.xiaomi.Xiaomi</finalizer>
+      </applicationDeployment>
+    </platform>
+    <platform name="default">
+    	<applicationDeployment/> 
+    </platform>
+  </platforms>
+</extension>

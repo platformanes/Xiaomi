@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   width="462" applicationComplete="handler_appComp(event)">
+	<fx:Style source="XiaomiSample.css"/>
+	<fx:Script>
+	<![CDATA[
+		import mx.events.FlexEvent;
+		
+		import us.sanguo.ane.xiaomi.XiaomiExt;
+		
+		private var isLang:Boolean = false;
+		private function handler_status($evt:StatusEvent):void
+		{
+			showInfo('------------------');
+			showInfo('handler_status');
+			showInfo('level:', $evt.level, ',code:', $evt.code);
+			showInfo('------------------');
+		}
+		
+		protected function handler_appComp($evt:FlexEvent):void 
+		{
+			XiaomiExt.iab.addEventListener(StatusEvent.STATUS,handler_status);
+		}
+		
+		protected function handler_getStorageBTNclick($evt:MouseEvent):void
+		{
+			clearInfo();
+			showInfo('====================');
+			showInfo('====================');
+			showInfo('====================');
+		}
+		
+		
+		protected function handler_getSystemInfoBTNclick($evt:MouseEvent):void
+		{
+			clearInfo();
+		}
+		
+		protected function handler_getPackageInfoBTNclick($evt:MouseEvent):void
+		{
+			showInfo('====================');
+		}
+		
+		
+		private function showInfo(...$args):void
+		{
+			var __info:String = '';
+			for (var i:int = 0; i < $args.length; i++) 
+			{
+				__info += $args[i] + File.lineEnding;
+			}
+			infoTA.appendText(__info);
+		}
+		
+		
+		
+		private function clearInfo():void
+		{
+			infoTA.text = '';
+		}
+		
+		
+		protected function sdk_handle(event:MouseEvent):void
+		{
+			var b:Button = event.currentTarget as Button;
+			switch(b.id)
+			{
+				case "initSDK":
+					XiaomiExt.iab.init(
+						"2882303761517267198",
+						"5361726724198");
+					break;
+				
+				case "login":
+					XiaomiExt.iab.login();
+					break;
+				
+				case "pay":
+					XiaomiExt.iab.payment("10","46121411481");
+					break;
+			}
+		}
+		
+		
+		
+		private function exit():void
+		{
+			NativeApplication.nativeApplication.exit();   
+		}
+		
+	]]>
+	</fx:Script>
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	<s:states>
+		<s:State name="fun1State"/>
+	</s:states>
+	<s:HGroup width="100%" horizontalAlign="center">
+		<s:Label id="qh360" width="406" height="41" color="#6A13ED" fontFamily="Arial" fontWeight="bold"
+				 text="360 ANE" textAlign="center" verticalAlign="middle"/>
+	</s:HGroup>
+	
+	<s:TileGroup includeIn="fun1State" width="100%" height="638">
+		<s:Button id="initSDK" y="12" width="225" height="27" label="初始化" click="sdk_handle(event)"
+				  fontFamily="_serif" fontSize="16" fontStyle="normal" fontWeight="bold"/>
+		<s:Button id="login" label="登录" click="sdk_handle(event)"/>
+		<s:Button id="pay" label="定额支付" click="sdk_handle(event)"/>
+		
+	</s:TileGroup>
+	
+	<s:VGroup width="100%" height="100%" horizontalAlign="right">
+		<s:TextArea id="infoTA" width="100%" height="100%" color="#030715" textAlign="left"/>
+		<s:HGroup>
+		</s:HGroup>
+	</s:VGroup>
+</s:Application>
